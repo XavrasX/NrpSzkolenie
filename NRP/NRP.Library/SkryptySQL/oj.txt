@@ -1,0 +1,76 @@
+create table ojk.oj_wersja
+(
+idOjk int identity(1,1) not null primary key,
+idKlienta int not null,
+Status nvarchar(50) not null,
+WynikOj decimal(16,6),
+RatingOj decimal(18,4),
+ProcentOj int,
+DataModyfikacji datetime not null,
+PracownikID nvarchar(30) not null
+)
+
+go
+
+create table ojk.Oj_POLA
+(
+id bigint identity(1,1) not null,
+idOjk int not null,
+Pole nvarchar(255) not null,
+Wartosc nvarchar(max) not null
+) on primary textimage_on primary
+go
+
+
+create procedure ojk.ModyfikujStatus
+(
+@idOjk int,
+@Status nvarchar(50)
+)
+as
+Update ojk.oj_wersja
+set status = @status, dataModyfikacji = getdate(), PracownikID=suser_sname()
+where idOjk=@idOjk and status = 'Roboczy'
+return @@Rowcount
+go
+
+create procedure ojk.DodajWersje
+(
+@idKlienta int,
+@Profil nvarchar(50),
+@Segment nvarchar(max)
+)
+as
+begin
+insert ojk.oj_wersja(idKlienta, Profil, Segment)
+values (@idKlienta, @Profil, @Segement);
+Return scope_identity();
+end
+Go
+
+create procedure ojk.ModyfikujWersje
+(
+@idOjk int
+)
+as
+begin
+declare @wynik int
+delare @P int
+declare @R int
+
+select @P = 1;
+select @R = 2;
+
+
+update ojk.OJ_Wersja
+set wynikOJ = @P, RatingOj = @R, ProcentOj =  @P+@R, dataModyfikacji = getdate(), PracownikID=suser_sname()
+where idOjk=@idOjk;
+
+select @wynik = 1;
+return @wynik;
+end
+
+
+
+
+
