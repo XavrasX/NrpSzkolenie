@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NRP.DataAcess", "NRP.DataAc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NRP.Library.Tests", "NRP.Library.Tests\NRP.Library.Tests.csproj", "{75B7483D-1C0C-4A1C-919B-785383FD2010}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NRP.KlientMvc", "NRP.KlientMvc\NRP.KlientMvc.csproj", "{AA6F3475-D7F0-45E9-8899-62DB3E76A663}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{75B7483D-1C0C-4A1C-919B-785383FD2010}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75B7483D-1C0C-4A1C-919B-785383FD2010}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75B7483D-1C0C-4A1C-919B-785383FD2010}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA6F3475-D7F0-45E9-8899-62DB3E76A663}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA6F3475-D7F0-45E9-8899-62DB3E76A663}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA6F3475-D7F0-45E9-8899-62DB3E76A663}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA6F3475-D7F0-45E9-8899-62DB3E76A663}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
