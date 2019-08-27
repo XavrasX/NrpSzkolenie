@@ -1,26 +1,29 @@
+use nrp;
+go
+create schema ojk;
+
+go
 create table ojk.oj_wersja
 (
-idOjk int identity(1,1) not null primary key,
-idKlienta int not null,
-Status nvarchar(50) not null,
-WynikOj decimal(16,6),
-RatingOj decimal(18,4),
-ProcentOj int,
-DataModyfikacji datetime not null,
-PracownikID nvarchar(30) not null
+	IdOjk int identity(1,1) not null primary key,
+	IdKlienta int not null,
+	Status nvarchar(50) not null,
+	WynikOj decimal(16,6),
+	RatingOj decimal(18,4),
+	ProcentOj int,
+	DataModyfikacji datetime not null,
+	PracownikID nvarchar(30) not null
 )
-
 go
 
 create table ojk.Oj_POLA
 (
-id bigint identity(1,1) not null,
-idOjk int not null,
-Pole nvarchar(255) not null,
-Wartosc nvarchar(max) not null
+	Id bigint identity(1,1) not null,
+	IdOjk int not null,
+	Pole nvarchar(255) not null, --'p_01_01'
+	Wartosc nvarchar(max) not null
 ) on primary textimage_on primary
 go
-
 
 create procedure ojk.ModyfikujStatus
 (
@@ -36,21 +39,21 @@ go
 
 create procedure ojk.DodajWersje
 (
-@idKlienta int,
-@Profil nvarchar(50),
-@Segment nvarchar(max)
+	@idKlienta int,
+	@Profil nvarchar(50),
+	@Segment nvarchar(max)
 )
 as
 begin
-insert ojk.oj_wersja(idKlienta, Profil, Segment)
-values (@idKlienta, @Profil, @Segement);
-Return scope_identity();
+	insert ojk.oj_wersja(idKlienta, Profil, Segment)
+	values (@idKlienta, @Profil, @Segement);
+	return scope_identity();
 end
 Go
 
 create procedure ojk.ModyfikujWersje
 (
-@idOjk int
+	@idOjk int
 )
 as
 begin
@@ -69,8 +72,3 @@ where idOjk=@idOjk;
 select @wynik = 1;
 return @wynik;
 end
-
-
-
-
-
