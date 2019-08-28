@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NRP.Library.Tests", "NRP.Li
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NRP.KlientMvc", "NRP.KlientMvc\NRP.KlientMvc.csproj", "{13DD6D68-5E19-4074-925F-D3F30AB679D9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{AA19DB03-4644-4CA4-B0E7-602C376D9F00}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +38,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{75B7483D-1C0C-4A1C-919B-785383FD2010} = {AA19DB03-4644-4CA4-B0E7-602C376D9F00}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ABCA7067-AA91-4F51-B21C-85B48CD87110}

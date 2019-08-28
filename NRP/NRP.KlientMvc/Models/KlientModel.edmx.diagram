@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="47835b3246b04e90ad10b02753987125" Name="Diagram1">
+        <EntityTypeShape EntityType="NrpModel.Klient" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NrpModel.Status" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NrpModel.Wersja" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="NrpModel.FK_Wersja_Klient" ManuallyRouted="false" />
+        <AssociationConnector Association="NrpModel.FK_Wersja_Status" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NrpModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Klient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="varchar" MaxLength="255" />
+          <Property Name="Opis" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Wersja">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KlientId" Type="int" Nullable="false" />
+          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="DataModyfikacji" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="PracownikId" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Wersja_Klient">
+          <End Role="Klient" Type="Self.Klient" Multiplicity="1" />
+          <End Role="Wersja" Type="Self.Wersja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Wersja">
+              <PropertyRef Name="KlientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wersja_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Wersja" Type="Self.Wersja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Wersja">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ModyfikujStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ojk">
+          <Parameter Name="klientId" Type="int" Mode="In" />
+          <Parameter Name="statusId" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="NrpModelStoreContainer">
+          <EntitySet Name="Klient" EntityType="Self.Klient" Schema="Ojk" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="Ojk" store:Type="Tables" />
+          <EntitySet Name="Wersja" EntityType="Self.Wersja" Schema="Ojk" store:Type="Tables" />
+          <AssociationSet Name="FK_Wersja_Klient" Association="Self.FK_Wersja_Klient">
+            <End Role="Klient" EntitySet="Klient" />
+            <End Role="Wersja" EntitySet="Wersja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wersja_Status" Association="Self.FK_Wersja_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Wersja" EntitySet="Wersja" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NrpModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Klient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Wersja" Relationship="Self.FK_Wersja_Klient" FromRole="Klient" ToRole="Wersja" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Wersja" Relationship="Self.FK_Wersja_Status" FromRole="Status" ToRole="Wersja" />
+        </EntityType>
+        <EntityType Name="Wersja">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KlientId" Type="Int32" Nullable="false" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="DataModyfikacji" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PracownikId" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Klient" Relationship="Self.FK_Wersja_Klient" FromRole="Wersja" ToRole="Klient" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_Wersja_Status" FromRole="Wersja" ToRole="Status" />
+        </EntityType>
+        <Association Name="FK_Wersja_Klient">
+          <End Role="Klient" Type="Self.Klient" Multiplicity="1" />
+          <End Role="Wersja" Type="Self.Wersja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Wersja">
+              <PropertyRef Name="KlientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wersja_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Wersja" Type="Self.Wersja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Wersja">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NrpEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Klient" EntityType="Self.Klient" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="Wersja" EntityType="Self.Wersja" />
+          <AssociationSet Name="FK_Wersja_Klient" Association="Self.FK_Wersja_Klient">
+            <End Role="Klient" EntitySet="Klient" />
+            <End Role="Wersja" EntitySet="Wersja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wersja_Status" Association="Self.FK_Wersja_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Wersja" EntitySet="Wersja" />
+          </AssociationSet>
+          <FunctionImport Name="ModyfikujStatus">
+            <Parameter Name="klientId" Mode="In" Type="Int32" />
+            <Parameter Name="statusId" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NrpModelStoreContainer" CdmEntityContainer="NrpEntities">
+          <EntitySetMapping Name="Klient">
+            <EntityTypeMapping TypeName="NrpModel.Klient">
+              <MappingFragment StoreEntitySet="Klient">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="NrpModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wersja">
+            <EntityTypeMapping TypeName="NrpModel.Wersja">
+              <MappingFragment StoreEntitySet="Wersja">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="KlientId" ColumnName="KlientId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="DataModyfikacji" ColumnName="DataModyfikacji" />
+                <ScalarProperty Name="PracownikId" ColumnName="PracownikId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ModyfikujStatus" FunctionName="NrpModel.Store.ModyfikujStatus" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
