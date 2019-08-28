@@ -50,6 +50,7 @@
     <Compile Include="WarningOmmittedExample.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Links.txt" />
     <Content Include="SkryptySQL\oj.txt" />
   </ItemGroup>
   <ItemGroup>

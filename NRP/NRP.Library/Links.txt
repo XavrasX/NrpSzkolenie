@@ -1,0 +1,18 @@
+﻿Git online book:
+https://git-scm.com/book/en/v2
+
+Entity framework:
+https://entityframework.net/
+https://www.entityframeworktutorial.net/
+
+LINQ
+https://code.msdn.microsoft.com/101-LINQ-Samples-3fb9811b/viewsamplepack
+
+Programmer Basic
+https://onedrive.live.com/?authkey=%21AD1fD2mONaV16Q0&cid=53A7795C3635B8D1&id=53A7795C3635B8D1%21135924&parId=53A7795C3635B8D1%21135432&o=OneUp
+
+Contoso University Sample:
+https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
+
+How to compile views in MVC application:
+https://haacked.com/archive/2011/05/09/compiling-mvc-views-in-a-build-environment.aspx/
