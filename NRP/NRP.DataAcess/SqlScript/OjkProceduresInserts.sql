@@ -1,4 +1,5 @@
-﻿use Nrp;
+﻿set nocount on;
+use Nrp;
 go
 
 create table Ojk.Pytania(
@@ -163,3 +164,13 @@ create procedure Ojk.sp_UsunPola(
 as
 delete from Ojk.WersjaPola where idWersji = @idwersj
 go
+
+create view Ojk.v_Form_Odpowiedzi as
+select op.id idOdpowiedzi, p.trescPytania, op.odpowiedz
+  from Ojk.Pytania p
+  join Ojk.OdpowiedziPunkty op 
+    on p.pytanie = op.pytanie
+go
+
+select * 
+  from Ojk.v_Form_Odpowiedzi
