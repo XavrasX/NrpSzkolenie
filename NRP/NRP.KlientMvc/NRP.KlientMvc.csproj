@@ -135,6 +135,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Metadata\IStatus.cs" />
+    <Compile Include="Models\Metadata\Klient.cs" />
+    <Compile Include="Models\Metadata\Status.cs" />
+    <Compile Include="Models\Metadata\Wersja.cs" />
     <Compile Include="Models\Klient.cs">
       <DependentUpon>KlientModel.tt</DependentUpon>
     </Compile>
@@ -171,6 +175,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\CodeGeneratorExample.js">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CodeGeneratorExample.tt</DependentUpon>
+    </Content>
+    <Content Include="Models\CodeGeneratorExample.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CodeGeneratorExample.js</LastGenOutput>
+    </Content>
     <Content Include="Models\KlientModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>KlientModel.Context.cs</LastGenOutput>
