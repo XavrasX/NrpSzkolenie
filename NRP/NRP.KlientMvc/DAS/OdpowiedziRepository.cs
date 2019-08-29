@@ -28,15 +28,22 @@ namespace NRP.KlientMvc.DAS
         {
             return _ctx.v_Form_Odpowiedzi.ToList();
         }
+
+        public v_Form_Odpowiedzi GetOdpowiedzi(int id)
+        {
+            return _ctx.v_Form_Odpowiedzi.Find(id);
+        }
+
         public void UpdateOdpowiedzi(IEnumerable<v_Form_Odpowiedzi> listaOdpowiedzi)
         {
+            if (listaOdpowiedzi == null) return;
+
             const string cmd = "insert Ojk.Klient (Nazwa, Opis)" +
                                " output inserted.*" +
                                " values(concat((select max(Id) + 1 from Ojk.Klient), ' - klient'), 'O nieznajomych trudno cos powiedziec w tym momencie')";
 
             _ctx.Database.ExecuteSqlCommand(cmd);
 
-            //_ctx.Entry(listaOdpowiedzi).State = EntityState.Modified;
             _ctx.SaveChanges();
         }
 
@@ -55,11 +62,6 @@ namespace NRP.KlientMvc.DAS
 
             if (dispose)
                 GC.SuppressFinalize(this);
-        }
-
-        public v_Form_Odpowiedzi GetOdpowiedzi(int id)
-        {
-            throw new NotImplementedException();
         }
 
         ~OdpowiedziRepository()

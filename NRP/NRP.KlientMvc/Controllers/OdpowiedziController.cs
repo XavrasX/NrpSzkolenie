@@ -23,14 +23,19 @@ namespace NRP.KlientMvc.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(List<v_Form_Odpowiedzi> listaOdpowiedzi)
+        public ActionResult Edit(FormCollection forms)
         {
             if (ModelState.IsValid)
             {
-                _repo.UpdateOdpowiedzi(listaOdpowiedzi);
-                return RedirectToAction("Index");
+                _repo.UpdateOdpowiedzi(null);
+                var length = forms.Count - 1;
+                for (int i = 0; i < length; i++)
+                {
+                    Response.Write($"<h2>{forms.AllKeys[i]}</h2><h3>{forms[i]}</h3>");
+                }
+                //return RedirectToAction("Index");
             }
-            return View(listaOdpowiedzi);
+            return View(_repo.GetOdpowiedzi(1));
         }
 
         protected override void Dispose(bool disposing)

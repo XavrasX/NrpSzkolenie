@@ -24,6 +24,8 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Status", "Index", "Status")</li>
                     <li>@Html.ActionLink("Klient", "Index", "Klient")</li>
+                    <li>@Html.ActionLink("Matrix v1", "Index", "Odpowiedzi", new { viewName = "v1" }, null)</li>
+                    <li>@Html.ActionLink("Matrix v2", "Index", "Odpowiedzi", new { viewName = "v2" }, null)</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 <p class="nav navbar-text navbar-right">Hello, @User.Identity.Name!</p>

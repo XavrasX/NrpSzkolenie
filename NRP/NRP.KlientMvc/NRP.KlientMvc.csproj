@@ -300,6 +300,8 @@
     <Content Include="Views\Matrix\Index.cshtml" />
     <Content Include="Views\Odpowiedzi\Index.cshtml" />
     <Content Include="Views\Odpowiedzi\v1.cshtml" />
+    <Content Include="Views\Odpowiedzi\v2.cshtml" />
+    <Content Include="Views\Odpowiedzi\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

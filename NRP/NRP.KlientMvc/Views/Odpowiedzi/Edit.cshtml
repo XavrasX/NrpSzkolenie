@@ -1,0 +1,31 @@
+﻿@model NRP.KlientMvc.Models.v_Form_Odpowiedzi
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Display</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.trescPytania)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.odpowiedz)
+        </th>
+        <th></th>
+    </tr>
+
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.trescPytania)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.odpowiedz)
+        </td>
+        <td>
+        </td>
+    </tr>
+</table>

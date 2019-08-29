@@ -14,12 +14,6 @@ namespace NRP.KlientMvc
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "odp",
-                url: "odp/{viewName}",
-                defaults: new { controller = "Odpowiedzi", action = "Index", viewName = UrlParameter.Optional }
-            );
-
-            routes.MapRoute(
                 name: "OCD",
                 url: "ocd/{nr}",
                 defaults: new { controller = "Home", action = "NeverDoLikeThis" }
