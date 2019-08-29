@@ -147,7 +147,9 @@
     <Compile Include="Controllers\KlientController.cs" />
     <Compile Include="Controllers\MatrixController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
-    <Compile Include="Controllers\v_Form_OdpowiedziController.cs" />
+    <Compile Include="Controllers\OdpowiedziController.cs" />
+    <Compile Include="DAS\IOdpowiedziRepository.cs" />
+    <Compile Include="DAS\OdpowiedziRepository.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -198,6 +200,9 @@
     </Compile>
     <Compile Include="Models\Wersja.cs">
       <DependentUpon>KlientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WersjaPola.cs">
+      <DependentUpon>OdpowiedziModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

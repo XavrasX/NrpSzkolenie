@@ -5,27 +5,32 @@
 }
 
 <h2>Lista odpowiedzi</h2>
-
-<table class="table">
-    <tr>
-        <th>
-           Treść pytania
-        </th>
-        <th>
-            Odpowiedź
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>    
-        <td>
-            @Html.DisplayFor(modelItem => item.trescPytania)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.odpowiedz)
-        </td>
-    </tr>
-}
-
-</table>
+<form action="/odpowiedzi/edit/" name="v_Form_Odpowiedzi" method="post">
+    @Html.AntiForgeryToken()
+    <table class="table">
+        <tr>
+            <th>
+                Treść pytania
+            </th>
+            <th>
+                Odpowiedź
+            </th>
+        </tr>
+        @foreach (var trp in Model.Select(o => o.trescPytania).Distinct())
+        {
+            <tr>
+                <td>
+                    @trp
+                </td>
+                <td>
+                    @foreach (var item in Model.Where(m => m.trescPytania == trp))
+                    {
+                        <input type="radio" id="@item.idOdpowiedzi" name="@item.idOdpowiedzi" value="@item.odpowiedz" />
+                        @item.odpowiedz<br>
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+    <input type="submit" value="Wyślij" />
+</form>

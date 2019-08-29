@@ -12,21 +12,32 @@ namespace NRP.KlientMvc.Controllers
 {
     public class OdpowiedziController : Controller
     {
-        private NrpOdpowiedziEntities db = new NrpOdpowiedziEntities();
-
+        private DAS.IOdpowiedziRepository _repo = new DAS.OdpowiedziRepository();
         public ActionResult Index(string viewName = null)
         {
             if (viewName == null)
-                return View(db.v_Form_Odpowiedzi.ToList());
+                return View(_repo.GetOdpowiedzi());
 
-            return View(viewName, db.v_Form_Odpowiedzi.ToList());
+            return View(viewName, _repo.GetOdpowiedzi());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(List<v_Form_Odpowiedzi> listaOdpowiedzi)
+        {
+            if (ModelState.IsValid)
+            {
+                _repo.UpdateOdpowiedzi(listaOdpowiedzi);
+                return RedirectToAction("Index");
+            }
+            return View(listaOdpowiedzi);
         }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                _repo.Dispose();
             }
             base.Dispose(disposing);
         }

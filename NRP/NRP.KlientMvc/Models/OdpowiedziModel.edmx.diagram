@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="c1847963cfff4891aa454cf4124fe4fb" Name="Diagram1">
         <EntityTypeShape EntityType="OdpowiedziModel.v_Form_Odpowiedzi" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OdpowiedziModel.WersjaPola" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

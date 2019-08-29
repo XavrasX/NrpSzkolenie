@@ -4,7 +4,18 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="OdpowiedziModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="OdpowiedziModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Nrp.Ojk.WersjaPola' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="WersjaPola">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idWersji" Type="int" />
+          <Property Name="pytanie" Type="varchar" MaxLength="20" />
+          <Property Name="odpowiedz" Type="varchar" MaxLength="10" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Nrp.Ojk.v_Form_Odpowiedzi' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_Form_Odpowiedzi">
@@ -16,6 +27,14 @@ warning 6002: The table/view 'Nrp.Ojk.v_Form_Odpowiedzi' does not have a primary
           <Property Name="odpowiedz" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityContainer Name="OdpowiedziModelStoreContainer">
+          <EntitySet Name="WersjaPola" EntityType="Self.WersjaPola" store:Type="Tables" store:Schema="Ojk">
+            <DefiningQuery>SELECT 
+    [WersjaPola].[id] AS [id], 
+    [WersjaPola].[idWersji] AS [idWersji], 
+    [WersjaPola].[pytanie] AS [pytanie], 
+    [WersjaPola].[odpowiedz] AS [odpowiedz]
+    FROM [Ojk].[WersjaPola] AS [WersjaPola]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_Form_Odpowiedzi" EntityType="Self.v_Form_Odpowiedzi" store:Type="Views" store:Schema="Ojk">
             <DefiningQuery>SELECT 
     [v_Form_Odpowiedzi].[idOdpowiedzi] AS [idOdpowiedzi], 
@@ -24,8 +43,7 @@ warning 6002: The table/view 'Nrp.Ojk.v_Form_Odpowiedzi' does not have a primary
     FROM [Ojk].[v_Form_Odpowiedzi] AS [v_Form_Odpowiedzi]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="OdpowiedziModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -39,7 +57,17 @@ warning 6002: The table/view 'Nrp.Ojk.v_Form_Odpowiedzi' does not have a primary
         </EntityType>
         <EntityContainer Name="NrpOdpowiedziEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="v_Form_Odpowiedzi" EntityType="Self.v_Form_Odpowiedzi" />
+          <EntitySet Name="WersjaPola" EntityType="OdpowiedziModel.WersjaPola" />
         </EntityContainer>
+        <EntityType Name="WersjaPola">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idWersji" Type="Int32" />
+          <Property Name="pytanie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="odpowiedz" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -52,6 +80,16 @@ warning 6002: The table/view 'Nrp.Ojk.v_Form_Odpowiedzi' does not have a primary
                 <ScalarProperty Name="idOdpowiedzi" ColumnName="idOdpowiedzi" />
                 <ScalarProperty Name="trescPytania" ColumnName="trescPytania" />
                 <ScalarProperty Name="odpowiedz" ColumnName="odpowiedz" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WersjaPola">
+            <EntityTypeMapping TypeName="OdpowiedziModel.WersjaPola">
+              <MappingFragment StoreEntitySet="WersjaPola">
+                <ScalarProperty Name="odpowiedz" ColumnName="odpowiedz" />
+                <ScalarProperty Name="pytanie" ColumnName="pytanie" />
+                <ScalarProperty Name="idWersji" ColumnName="idWersji" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -70,7 +108,7 @@ warning 6002: The table/view 'Nrp.Ojk.v_Form_Odpowiedzi' does not have a primary
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
