@@ -1,0 +1,14 @@
+﻿@model NRP.KlientMvc.Models.Matrix
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@foreach (var item in Model.Questions)
+{
+    <p>@item.Id</p>
+    <p>@item.Text</p>
+    @Html.DropDownList("Answers", item.Answers)
+}
+

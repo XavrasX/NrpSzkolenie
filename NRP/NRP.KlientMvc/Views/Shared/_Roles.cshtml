@@ -1,0 +1,24 @@
+﻿@*@model dynamic*@
+
+@*@{ dynamic context = (dynamic)Model;}*@
+<tr>
+    <td>
+        @if (User.IsInRole("Users"))
+        {
+            <div>User is in role <small>Users</small></div>
+        }
+    </td>
+    <td>
+        Powered by PARTIAL VIEW: @context.Info
+        @* @Roles.GetRolesForUser();*@
+    </td>
+
+</tr>
+
+@*@foreach (var item in User.Identity.AuthenticationType) {
+        <tr>
+            <td>
+                @item
+            </td>
+        </tr>
+    }*@

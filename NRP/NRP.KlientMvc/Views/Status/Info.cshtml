@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Info";
+}
+<h2>User Information</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @User.Identity.Name
+        </th>
+        <th></th>
+    </tr>
+    @{
+        Html.RenderPartial("_Roles",new { Info="To jest info z wlasciwego widoku"});
+    }
+
+    @Html.Partial("_Roles",new { Info="To jest info z wlasciwego widoku"})
+</table>

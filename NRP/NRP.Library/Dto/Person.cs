@@ -3,6 +3,14 @@ using System;
 
 namespace NRP.Library.Dto
 {
+    [AttributeUsage(AttributeTargets.All, Inherited = false, AllowMultiple = true)]
+    sealed class StickerAttribute : Attribute
+    {
+        public string Text { get; set; }
+    }
+    
+
+    [Sticker(Text ="Nie zapomnij odebrac go z przedszkola")]
     internal class Person
     {
         // Id has to be positive value greater than 0
@@ -23,6 +31,8 @@ namespace NRP.Library.Dto
         {
             if (value < 1) throw new InvalidOperationException(Errors.ValueHasBePositive);
         }
+
+        public decimal Foo() { throw new NotImplementedException(); }
 
         public string AutoPropertyExample { get; set; }
     }

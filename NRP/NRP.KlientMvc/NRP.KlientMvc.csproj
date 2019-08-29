@@ -129,6 +129,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KlientController.cs" />
+    <Compile Include="Controllers\MatrixController.cs" />
+    <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -150,6 +153,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>KlientModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Matrix.cs" />
     <Compile Include="Models\Status.cs">
       <DependentUpon>KlientModel.tt</DependentUpon>
     </Compile>
@@ -211,6 +215,19 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Status\Create.cshtml" />
+    <Content Include="Views\Status\Delete.cshtml" />
+    <Content Include="Views\Status\Details.cshtml" />
+    <Content Include="Views\Status\Edit.cshtml" />
+    <Content Include="Views\Status\Index.cshtml" />
+    <Content Include="Views\Klient\Create.cshtml" />
+    <Content Include="Views\Klient\Delete.cshtml" />
+    <Content Include="Views\Klient\Details.cshtml" />
+    <Content Include="Views\Klient\Edit.cshtml" />
+    <Content Include="Views\Klient\Index.cshtml" />
+    <Content Include="Views\Status\Info.cshtml" />
+    <Content Include="Views\Shared\_Roles.cshtml" />
+    <Content Include="Views\Matrix\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
