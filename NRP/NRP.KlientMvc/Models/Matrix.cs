@@ -5,8 +5,10 @@ using System.Web;
 
 namespace NRP.KlientMvc.Models
 {
-    public class Question
+    public class Question : IStatus
     {
+        string IStatus.Nazwa { get; set; }
+        int IStatus.Id { get; set; }
         public int Id { get; set; }
         public string Text { get; set; }
         public List<string> Answers { get; set; }
