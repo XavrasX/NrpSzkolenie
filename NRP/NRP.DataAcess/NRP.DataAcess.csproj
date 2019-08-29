@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="SqlScript\CreateDbAndSchema.sql" />
+    <Content Include="SqlScript\OjkProceduresInserts.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
