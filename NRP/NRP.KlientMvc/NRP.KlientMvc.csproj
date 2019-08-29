@@ -132,6 +132,7 @@
     <Compile Include="Controllers\KlientController.cs" />
     <Compile Include="Controllers\MatrixController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
+    <Compile Include="Controllers\v_Form_OdpowiedziController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -158,8 +159,26 @@
       <DependentUpon>KlientModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Matrix.cs" />
+    <Compile Include="Models\OdpowiedziModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OdpowiedziModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OdpowiedziModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OdpowiedziModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OdpowiedziModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OdpowiedziModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Status.cs">
       <DependentUpon>KlientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\v_Form_Odpowiedzi.cs">
+      <DependentUpon>OdpowiedziModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Wersja.cs">
       <DependentUpon>KlientModel.tt</DependentUpon>
@@ -194,6 +213,16 @@
       <DependentUpon>KlientModel.edmx</DependentUpon>
       <LastGenOutput>KlientModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\OdpowiedziModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OdpowiedziModel.edmx</DependentUpon>
+      <LastGenOutput>OdpowiedziModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\OdpowiedziModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OdpowiedziModel.edmx</DependentUpon>
+      <LastGenOutput>OdpowiedziModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\KlientModel.edmx">
@@ -202,6 +231,13 @@
     </EntityDeploy>
     <Content Include="Models\KlientModel.edmx.diagram">
       <DependentUpon>KlientModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\OdpowiedziModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>OdpowiedziModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\OdpowiedziModel.edmx.diagram">
+      <DependentUpon>OdpowiedziModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -241,6 +277,11 @@
     <Content Include="Views\Status\Info.cshtml" />
     <Content Include="Views\Shared\_Roles.cshtml" />
     <Content Include="Views\Matrix\Index.cshtml" />
+    <Content Include="Views\Odpowiedzi\Create.cshtml" />
+    <Content Include="Views\Odpowiedzi\Delete.cshtml" />
+    <Content Include="Views\Odpowiedzi\Details.cshtml" />
+    <Content Include="Views\Odpowiedzi\Edit.cshtml" />
+    <Content Include="Views\Odpowiedzi\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
