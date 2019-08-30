@@ -19,11 +19,13 @@
 <script src="~/Scripts/jquery-3.3.1.js" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
+        var routeUrl = '@Url.Content("~/")';
         $("#calc").click(function () {
             var left = document.getElementById("left");
             var right = document.getElementById("right");
             var operation = document.getElementById("operation").value;
-            var rq = '/c/' + left.value + '/' + operation + '/' + right.value;
+            //var rq = 'http://localhost:61884/c/' + left.value + '/' + operation + '/' + right.value;
+            var rq = routeUrl+'c/' + left.value + '/' + operation + '/' + right.value;
 
             $.get(rq, function(data, status){
                 console.log(data);

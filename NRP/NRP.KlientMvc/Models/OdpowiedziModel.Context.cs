@@ -31,5 +31,7 @@ namespace NRP.KlientMvc.Models
 
         public virtual DbSet<v_Form_Odpowiedzi> v_Form_Odpowiedzi { get; set; }
         public virtual DbSet<WersjaPola> WersjaPola { get; set; }
+
+        object placeHolderVariable;
     }
 }

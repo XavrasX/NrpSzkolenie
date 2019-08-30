@@ -9,10 +9,11 @@ namespace NRP.WebApiDemo.Controllers
 {
     public class ValuesController : ApiController
     {
-        // GET api/values
-        public IEnumerable<string> Get()
+        public IEnumerable<dynamic> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new dynamic[] { new { FirstName = "Dariusz", LastName="Popis", BirthDate=DateTime.Now.AddYears(-47)},
+                new { FirstName = "Kinga", LastName = "Gawrysiak" }
+            };
         }
 
         // GET api/values/5

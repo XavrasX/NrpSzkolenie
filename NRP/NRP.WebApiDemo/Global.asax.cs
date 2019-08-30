@@ -16,6 +16,11 @@ namespace NRP.WebApiDemo
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+
+            //GlobalConfiguration.Configuration
+            //    .EnableSwagger(c => c.SingleApiVersion("v1", "A title for your API"))
+            //    .EnableSwaggerUi();
+
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }

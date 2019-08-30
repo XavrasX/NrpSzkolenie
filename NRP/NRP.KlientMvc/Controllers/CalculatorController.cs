@@ -1,12 +1,7 @@
 ﻿using NRP.WebApiDemo.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
-namespace NRP.WebApiDemo.Controllers
+namespace NRP.KlientMvc.Controllers
 {
     public class CalculatorController : ApiController
     {

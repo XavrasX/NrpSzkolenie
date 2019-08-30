@@ -16,3 +16,6 @@ https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-sta
 
 How to compile views in MVC application:
 https://haacked.com/archive/2011/05/09/compiling-mvc-views-in-a-build-environment.aspx/
+
+REST (Richartson Maturity Model)
+https://restfulapi.net/richardson-maturity-model/
