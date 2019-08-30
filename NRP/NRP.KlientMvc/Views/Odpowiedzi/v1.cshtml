@@ -24,10 +24,10 @@
                 <td>
                     @{var first = true; }
                     @foreach (var item in Model.Where(m => m.trescPytania == trescPytania))
-        {
+                    {
                         <input type="radio"
                                name="@trescPytania" id="@item.idOdpowiedzi"
-                               value="@item.idOdpowiedzi" 
+                               value="@item.idOdpowiedzi"
                                @if (first) { <text> checked</text> first = false; } />
                         // @: checked // other kind of escaping from C# to html
                         <label for="@item.idOdpowiedzi">@item.odpowiedz</label> <br>

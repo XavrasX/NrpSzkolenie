@@ -20,7 +20,6 @@ namespace NRP.KlientMvc.Controllers
             return View(db.Klient.ToList());
         }
 
-        // GET: Klient/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,15 +34,11 @@ namespace NRP.KlientMvc.Controllers
             return View(klient);
         }
 
-        // GET: Klient/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Klient/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Nazwa,Opis")] Klient klient)
@@ -58,7 +53,6 @@ namespace NRP.KlientMvc.Controllers
             return View(klient);
         }
 
-        // GET: Klient/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,9 +67,6 @@ namespace NRP.KlientMvc.Controllers
             return View(klient);
         }
 
-        // POST: Klient/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Nazwa,Opis")] Klient klient)

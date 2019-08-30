@@ -12,7 +12,18 @@ namespace NRP.KlientMvc.Controllers
 {
     public class OdpowiedziController : Controller
     {
-        private DAS.IOdpowiedziRepository _repo = new DAS.OdpowiedziRepository();
+        private DAS.IOdpowiedziRepository _repo;
+
+        public OdpowiedziController()
+        {
+            _repo = new DAS.OdpowiedziRepository();
+        }
+
+        public OdpowiedziController(DAS.IOdpowiedziRepository repository)
+        {
+            _repo = repository;
+        }
+
         public ActionResult Index(string viewName = null)
         {
             if (viewName == null)
